@@ -1,14 +1,10 @@
-import {UPLOAD_FILES, UPDATE_TORRENT_SPEED} from '../actions/types';
-
-
+import {UPLOAD_FILES, UPDATE_TORRENT_SPEED, UPDATE_FILE_DETAILS} from '../actions/types';
 
 const initialState = {
     filesToUpload: [],
     speedUp: 0,
     peers: 0,
-    fileName: "",
-    fileSize: 0,
-    fileType: "",
+    file: null,
     infoHash: null,
     status: "ready",
     token: null
@@ -19,7 +15,7 @@ export default function (state = initialState, action) {
         case UPLOAD_FILES:
             return {
                 ...state,
-                filesToUpload: action.payload,
+                filesToUpload: action.payload.files,
                 status: 'processing'
             };
         case UPDATE_TORRENT_SPEED:
@@ -27,7 +23,15 @@ export default function (state = initialState, action) {
                 ...state,
                 speedUp: action.payload.speedUp,
                 peers: action.payload.peers,
-                status: 'running'
+                status: 'uploading'
+            };
+        case UPDATE_FILE_DETAILS:
+            return {
+                ...state,
+                file: action.payload.file,
+                token: action.payload.token,
+                infoHash: action.payload.infoHash,
+                status: 'uploading'
             };
         default:
             return state;

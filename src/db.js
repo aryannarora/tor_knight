@@ -5,6 +5,9 @@ export const create = (url, token) => {
     console.log("db => ", db);
 };
 
-export const get = token => db[token] || null;
+export const get = token => {
+    console.log("db => ", db);
+    return db[token] || null;;
+}
 
 export const remove = url => delete db[url];

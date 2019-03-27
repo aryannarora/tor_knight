@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./dropZone.css";
 
 class Dropzone extends Component {
     constructor(props) {
         super(props);
-        this.state = { hightlight: false };
+        this.state = {hightlight: false};
         this.fileInputRef = React.createRef();
 
         this.openFileDialog = this.openFileDialog.bind(this);
@@ -23,7 +23,6 @@ class Dropzone extends Component {
         if (this.props.disabled) return;
         const files = evt.target.files;
         if (this.props.onFilesAdded) {
-            console.log("onIflesAdded is runnig")
             const array = this.fileListToArray(files);
             this.props.onFilesAdded(array);
         }
@@ -34,11 +33,11 @@ class Dropzone extends Component {
 
         if (this.props.disabled) return;
 
-        this.setState({ hightlight: true });
+        this.setState({hightlight: true});
     }
 
     onDragLeave() {
-        this.setState({ hightlight: false });
+        this.setState({hightlight: false});
     }
 
     onDrop(event) {
@@ -51,7 +50,7 @@ class Dropzone extends Component {
             const array = this.fileListToArray(files);
             this.props.onFilesAdded(array);
         }
-        this.setState({ hightlight: false });
+        this.setState({hightlight: false});
     }
 
     fileListToArray(list) {
@@ -70,7 +69,7 @@ class Dropzone extends Component {
                 onDragLeave={this.onDragLeave}
                 onDrop={this.onDrop}
                 onClick={this.openFileDialog}
-                style={{ cursor: this.props.disabled ? "default" : "pointer" }}
+                style={{cursor: this.props.disabled ? "default" : "pointer"}}
             >
                 <input
                     ref={this.fileInputRef}

@@ -2,14 +2,24 @@ const io = require('socket.io')();
 const cc = require('./wt/create.client');
 io.on('connection', (client) => {
     client.on('upload', (x) => {
-        console.log("upload received", x);
-        cc().then(c => {
-            console.log("client created")
-            c.add(x.magnetURI, torrent => {
-                console.log('Client is downloading:', torrent.infoHash);
-            })
-            console.log("client surpassed")
-        })
+        console.log("upload received");
+        return cc().then(c => {
+            return c.add(x.magnetURI, torrent => {
+                const updateSpeed = () => {
+                    this.setState({
+                        speedUp: torrent.uploadSpeed,
+                        speedDown: torrent.downloadSpeed,
+                        peers: torrent.numPeers
+                    })
+                }
+
+                torrent.on('upload', updateSpeed)
+                torrent.on('download', updateSpeed)
+                setInterval(updateSpeed, 5000)
+                console.log('Client is downloading:', torrent);
+                console.log("client surpassed")
+            });
+        });
     })
 });
 

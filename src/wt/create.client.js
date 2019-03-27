@@ -1,3 +1,4 @@
+/* eslint-disable */
 const getIceServers = require('./get.ice.servers');
 const wt = require('webtorrent');
 
