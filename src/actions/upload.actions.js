@@ -1,13 +1,11 @@
 import {UPLOAD_FILES, UPDATE_TORRENT_SPEED, UPDATE_FILE_DETAILS} from '../actions/types';
-// import openSocket from 'socket.io-client';
 import {create as mapTokenToMagnetURI} from '../db/db';
-
-// const socket = openSocket('http://localhost:8000');
 const wt = require('./../wt');
 const uuidv1 = require('uuid/v1');
 
 const TRACKERS = [
     ["wss://tracker.btorrent.xyz"],
+    ["wss://tracker.webtorrent.io"]
 ];
 
 const generateToken = _ => uuidv1();
