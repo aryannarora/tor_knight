@@ -1,17 +1,18 @@
 import {
     ERROR,
-    PROCESSING,
     DOWNLOAD_COMPLETED,
     UPDATE_TORRENT_SPEED,
     UPDATE_DOWNLOAD_PROGRESS,
-    UPDATE_FILE_DETAILS
+    UPDATE_FILE_DETAILS,
+    READY,
+    CONNECTING
 } from '../actions/types';
 
 import {get} from '../db/db';
 
 const wt = require('./../wt');
 
-const SPEED_REFRESH_TIME = 2000;
+const SPEED_REFRESH_TIME = 800;
 
 const downloadBlobURL = (name, blobURL) => {
     let a = document.createElement('a');
@@ -24,22 +25,19 @@ const downloadBlobURL = (name, blobURL) => {
 export const requestDownload = (token) => dispatch => {
 
     let magnet = null;
-
     if (!token) return dispatch({
         type: ERROR
     });
 
+    console.log(token)
+
     dispatch({
-        type: PROCESSING,
+        type: CONNECTING,
         payload: {}
     });
 
     return Promise.resolve(get(token))
-        .then(token => {
-            console.log(token)
-            return token;
-        })
-        .then(m => !!m ? magnet = m : Promise.reject(-1))
+        .then(m => !!m ? magnet = m.magnet : Promise.reject(-1))
         .then(_ => wt.createClient())
         .then(client => {
             return client.add(magnet, torrent => {
@@ -97,9 +95,28 @@ export const requestDownload = (token) => dispatch => {
 
         })
         .catch(e => {
-            console.log("error", e)
+            console.log("error", e);
             dispatch({
                 type: ERROR
             })
         });
+};
+
+export const isValidURI = (token) => dispatch => {
+    return Promise.resolve(get(token))
+        .then(obj => {
+            if (!!obj && !!obj.magnet) {
+                dispatch({
+                    type: READY,
+                    payload: {
+                        file: {
+                            name: obj.fileName,
+                            length: obj.fileSize
+                        }
+                    }
+                })
+            } else dispatch({
+                type: ERROR,
+            })
+        })
 };

@@ -7,7 +7,9 @@ const createClient = () => {
         .then(iceServers => {
             const client = new wt({
                 tracker: {
-                    rtcConfig: {}
+                    rtcConfig: {
+                        iceServers: iceServers
+                    }
                 }
             });
             return client;

@@ -5,11 +5,10 @@ const uuidv1 = require('uuid/v1');
 
 const TRACKERS = [
     ["wss://tracker.btorrent.xyz"],
-    ["wss://tracker.webtorrent.io"]
 ];
 
 const generateToken = _ => uuidv1();
-const SPEED_REFRESH_TIME = 20000;
+const SPEED_REFRESH_TIME = 800;
 
 
 export const seedFiles = (files = []) => dispatch => {
@@ -23,7 +22,7 @@ export const seedFiles = (files = []) => dispatch => {
                 }
             });
             return client.seed(files[0], {announce: TRACKERS}, torrent => {
-                console.log(torrent.infoHash)
+
                 const updateSpeed = () => dispatch({
                     type: UPDATE_TORRENT_SPEED,
                     payload: {
@@ -38,7 +37,8 @@ export const seedFiles = (files = []) => dispatch => {
                 torrent.on("download", updateSpeed);
 
                 const token = generateToken();
-                mapTokenToMagnetURI(torrent.magnetURI, token);
+                console.log(files[0])
+                mapTokenToMagnetURI(torrent.magnetURI, token, files[0]);
 
                 dispatch({
                     type: UPDATE_FILE_DETAILS,

@@ -6,4 +6,6 @@ export const DOWNLOAD_COMPLETED = 'DOWNLOAD_COMPLETED';
 export const UPDATE_DOWNLOAD_PROGRESS = 'UPDATE_DOWNLOAD_PROGRESS';
 
 export const ERROR = 'ERROR';
-export const PROCESSING = 'PROCESSING';
+export const READY = 'READY';
+export const CONNECTING = 'CONNECTING';
+export const VERIFYING = 'VERIFYING';

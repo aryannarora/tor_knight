@@ -3,8 +3,9 @@ import {
     UPDATE_FILE_DETAILS,
     ERROR,
     UPDATE_DOWNLOAD_PROGRESS,
-    PROCESSING,
-    DOWNLOAD_COMPLETED
+    VERIFYING,
+    DOWNLOAD_COMPLETED,
+    READY, CONNECTING
 } from '../actions/types';
 
 const initialState = {
@@ -14,15 +15,26 @@ const initialState = {
     peers: 0,
     file: null,
     infoHash: null,
-    status: "ready"
+    status: "verifying"
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case PROCESSING:
+        case VERIFYING:
             return {
                 ...state,
-                status: 'processing'
+                status: 'verifying'
+            };
+        case CONNECTING:
+            return {
+                ...state,
+                status: 'connecting'
+            };
+        case READY:
+            return {
+                ...state,
+                status: 'ready',
+                file: action.payload.file
             };
         case UPDATE_TORRENT_SPEED:
             return {

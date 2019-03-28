@@ -3,29 +3,37 @@ import {connect} from 'react-redux';
 import FileDescriptor from "./fileDescriptor";
 import DownloadButton from "./downloadButton";
 import Stats from "./stats";
-import {requestDownload} from './../actions/download.actions';
-import {get} from "../db/db";
+import {requestDownload, isValidURI} from './../actions/download.actions';
 
 
 class DownloadPage extends Component {
 
+    componentDidMount() {
+        console.log("component mounted")
+        this.props.isValidURI(this.props.match.params.token);
+    }
+
     render() {
-        const valid = !!get(this.props.match.params.token);
-        let btn = <div></div>
-        if (true) btn = <DownloadButton onClick={this.props.requestDownload} token={this.props.match.params.token}/>
         switch (this.props.status) {
             case 'ready' :
                 return (
                     <div>
                         <h3>Download Page</h3>
-                        {btn}
+                        <FileDescriptor file={this.props.file}/>
+                        <DownloadButton onClick={this.props.requestDownload} token={this.props.match.params.token}/>
                     </div>
                 );
 
-            case 'processing' :
+            case 'connecting' :
                 return (
                     <div>
-                        <h3>Processing...</h3>
+                        <h3>Connecting to peers...</h3>
+                    </div>
+                );
+            case 'verifying' :
+                return (
+                    <div>
+                        <h3>Verifying the token...</h3>
                     </div>
                 );
 
@@ -42,7 +50,8 @@ class DownloadPage extends Component {
                     <div>
                         <h3>Downloading file!</h3>
                         <FileDescriptor file={this.props.file}/>
-                        <Stats peers={this.props.peers} speedUp={this.props.speedUp} speedDown={this.props.speedDown} progress={this.props.progress}/>
+                        <Stats peers={this.props.peers} speedUp={this.props.speedUp} speedDown={this.props.speedDown}
+                               progress={this.props.progress}/>
                     </div>
                 );
             case 'downloaded':
@@ -74,4 +83,4 @@ const mapStateToProps = state => ({
     progress: state.downloadReducer.progress
 });
 
-export default connect(mapStateToProps, {requestDownload: requestDownload})(DownloadPage);
+export default connect(mapStateToProps, {requestDownload: requestDownload, isValidURI: isValidURI})(DownloadPage);
