@@ -11,7 +11,7 @@ import {get} from '../db/db';
 
 const wt = require('./../wt');
 
-const SPEED_REFRESH_TIME = 20000;
+const SPEED_REFRESH_TIME = 2000;
 
 const downloadBlobURL = (name, blobURL) => {
     let a = document.createElement('a');
