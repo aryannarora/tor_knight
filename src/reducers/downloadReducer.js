@@ -30,6 +30,7 @@ export default function (state = initialState, action) {
                 speedUp: action.payload.speedUp,
                 speedDown: action.payload.speedDown,
                 peers: action.payload.peers,
+                progress:action.payload.progress,
                 status: 'downloading'
             };
         case UPDATE_FILE_DETAILS:

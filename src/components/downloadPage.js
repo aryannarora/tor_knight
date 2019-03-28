@@ -42,7 +42,7 @@ class DownloadPage extends Component {
                     <div>
                         <h3>Downloading file!</h3>
                         <FileDescriptor file={this.props.file}/>
-                        <Stats peers={this.props.peers} speedUp={this.props.speedUp} speedDown={this.props.speedDown}/>
+                        <Stats peers={this.props.peers} speedUp={this.props.speedUp} speedDown={this.props.speedDown} progress={this.props.progress}/>
                     </div>
                 );
             case 'downloaded':
