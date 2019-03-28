@@ -3,7 +3,8 @@ import {
     PROCESSING,
     DOWNLOAD_COMPLETED,
     UPDATE_TORRENT_SPEED,
-    UPDATE_DOWNLOAD_PROGRESS
+    UPDATE_DOWNLOAD_PROGRESS,
+    UPDATE_FILE_DETAILS
 } from '../actions/types';
 
 import {get} from './../db';
@@ -22,7 +23,8 @@ const downloadBlobURL = (name, blobURL) => {
 
 export const requestDownload = (token) => dispatch => {
 
-    const magnet = token;
+    // const magnet = token;
+    var magnet = "magnet:?xt=urn:btih:0c3b16fb89eb256ece02d6902d938092be200a92&dn=nfo.gif&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.btorrent.xyz";
     // console.log("magnet");
     // if (!magnet) return dispatch({
     //     type: ERROR
@@ -37,8 +39,18 @@ export const requestDownload = (token) => dispatch => {
         .then(client => {
             console.log("client created", magnet);
             client.add(magnet, torrent => {
-                console.log("client added", torrent);
+
+                const file = torrent.files[0];
+                dispatch({
+                    type: UPDATE_FILE_DETAILS,
+                    payload: {
+                        file: file,
+                        infoHash: torrent.infoHash
+                    }
+                });
+
                 const updateSpeed = () => {
+                    console.log(torrent.downloadSpeed)
                     dispatch({
                         type: UPDATE_TORRENT_SPEED,
                         payload: {
@@ -53,7 +65,6 @@ export const requestDownload = (token) => dispatch => {
                 torrent.on('download', updateSpeed);
                 setInterval(updateSpeed, SPEED_REFRESH_TIME);
 
-                const file = torrent.files[0];
                 const stream = file.createReadStream();
                 stream.on('data', _ => {
                     if (torrent.progress === 1) {

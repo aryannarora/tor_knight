@@ -8,7 +8,6 @@ const uuidv1 = require('uuid/v1');
 
 const TRACKERS = [
     ["wss://tracker.btorrent.xyz"],
-    ["wss://tracker.openwebtorrent.com"],
 ];
 
 const generateToken = _ => uuidv1();
@@ -25,8 +24,8 @@ export const seedFiles = (files = []) => dispatch => {
                     files
                 }
             });
-
-            return client.seed(files, {announce: TRACKERS}, torrent => {
+            return client.seed(files[0], {announce: TRACKERS}, torrent => {
+                console.log(torrent.infoHash)
                 const updateSpeed = () => dispatch({
                     type: UPDATE_TORRENT_SPEED,
                     payload: {

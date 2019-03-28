@@ -9,11 +9,11 @@ import {seedFiles} from './../actions/upload.actions';
 class UploadPage extends Component {
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.filesToUpload) {
-            nextProps.filesToUpload.map(file => (
-                this.props.filesToUpload.unshift(file)
-            ));
-        }
+        // if (nextProps.filesToUpload) {
+        //     nextProps.filesToUpload.map(file => (
+        //         this.props.filesToUpload.unshift(file)
+        //     ));
+        // }
     }
 
     render() {

@@ -13,7 +13,6 @@ class DownloadPage extends Component {
         const valid = !!get(this.props.match.params.token);
         let btn = <div></div>
         if (true) btn = <DownloadButton onClick={this.props.requestDownload} token={this.props.match.params.token}/>
-        console.log("status ", this.props.status, this.props.match.params.token);
         switch (this.props.status) {
             case 'ready' :
                 return (
@@ -35,7 +34,7 @@ class DownloadPage extends Component {
                     <div>
                         <h3>Initialising file!</h3>
                         <FileDescriptor file={this.props.file}/>
-                        <Stats peers={this.props.peers} speedUp={this.props.speedUp}/>
+                        <Stats peers={this.props.peers}/>
                     </div>
                 );
             case 'downloading':
@@ -43,7 +42,7 @@ class DownloadPage extends Component {
                     <div>
                         <h3>Downloading file!</h3>
                         <FileDescriptor file={this.props.file}/>
-                        <Stats peers={this.props.peers} speedUp={this.props.speedUp}/>
+                        <Stats peers={this.props.peers} speedUp={this.props.speedUp} speedDown={this.props.speedDown}/>
                     </div>
                 );
             case 'downloaded':

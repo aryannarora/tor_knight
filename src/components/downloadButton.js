@@ -8,7 +8,6 @@ class DownloadButton extends Component {
     }
 
     onClick() {
-        console.log("button is getting clicked")
         if (this.props.onClick) this.props.onClick(this.props.token);
     }
 
