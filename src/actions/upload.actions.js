@@ -1,6 +1,6 @@
 import {UPLOAD_FILES, UPDATE_TORRENT_SPEED, UPDATE_FILE_DETAILS} from '../actions/types';
 // import openSocket from 'socket.io-client';
-import {create as mapInfoHashToToken} from './../db';
+import {create as mapTokenToMagnetURI} from '../db/db';
 
 // const socket = openSocket('http://localhost:8000');
 const wt = require('./../wt');
@@ -40,13 +40,13 @@ export const seedFiles = (files = []) => dispatch => {
                 torrent.on("download", updateSpeed);
 
                 const token = generateToken();
-                mapInfoHashToToken(torrent.magnetURI, token);
+                mapTokenToMagnetURI(torrent.magnetURI, token);
 
                 dispatch({
                     type: UPDATE_FILE_DETAILS,
                     payload: {
                         file: torrent.files[0],
-                        token: torrent.infoHash,
+                        token: token,
                         infoHash: torrent.infoHash
                     }
                 });

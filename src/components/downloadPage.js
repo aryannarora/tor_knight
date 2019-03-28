@@ -4,7 +4,7 @@ import FileDescriptor from "./fileDescriptor";
 import DownloadButton from "./downloadButton";
 import Stats from "./stats";
 import {requestDownload} from './../actions/download.actions';
-import {get} from "../db";
+import {get} from "../db/db";
 
 
 class DownloadPage extends Component {
