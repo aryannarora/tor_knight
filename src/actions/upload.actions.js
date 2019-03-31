@@ -1,13 +1,10 @@
 import {UPLOAD_FILES, UPDATE_TORRENT_SPEED, UPDATE_FILE_DETAILS} from '../actions/types';
 import {create as mapTokenToMagnetURI} from '../db/db';
-
+const config = require('./../../config');
 const wt = require('./../wt');
 const uuidv1 = require('uuid/v1');
 
-const TRACKERS = [
-    ["ws://ec2-52-90-79-71.compute-1.amazonaws.com:8000"],
-    ["wss://tracker.btorrent.xyz"],
-];
+const TRACKERS = config.TRACKERS;
 
 const generateToken = _ => uuidv1();
 const SPEED_REFRESH_TIME = 800;
