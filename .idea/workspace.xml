@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a92c7a11-04fa-498a-bd47-c20488e8d0c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.sample.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/upload.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/upload.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,7 +33,7 @@
           <entry key="ico" value="1" />
           <entry key="js" value="129" />
           <entry key="json" value="3" />
-          <entry key="md" value="1" />
+          <entry key="md" value="2" />
           <entry key="svg" value="2" />
           <entry key="ts" value="2" />
         </counts>
@@ -50,7 +45,7 @@
           <entry key="Image" value="1" />
           <entry key="JSON" value="3" />
           <entry key="JavaScript" value="130" />
-          <entry key="Markdown" value="1" />
+          <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="SVG" value="2" />
           <entry key="TypeScript" value="2" />
@@ -70,6 +65,7 @@
           <entry key="html" value="11" />
           <entry key="js" value="9760" />
           <entry key="json" value="33" />
+          <entry key="md" value="151" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -78,6 +74,7 @@
           <entry key="HTML" value="11" />
           <entry key="JSON" value="33" />
           <entry key="JavaScript" value="9760" />
+          <entry key="Markdown" value="151" />
           <entry key="PLAIN_TEXT" value="36" />
         </counts>
       </usages-collector>
@@ -150,11 +147,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="75">
+                <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -190,7 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/public/x.svg" />
         <option value="$PROJECT_DIR$/src/components/dropZone.css" />
         <option value="$PROJECT_DIR$/lib/webtorrent.js" />
@@ -241,6 +249,7 @@
         <option value="$PROJECT_DIR$/src/db/config.js" />
         <option value="$PROJECT_DIR$/config.sample.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -339,12 +348,12 @@
       <updated>1553624910148</updated>
       <workItem from="1553624913376" duration="48772000" />
       <workItem from="1553772109850" duration="28410000" />
-      <workItem from="1553978215975" duration="18130000" />
+      <workItem from="1553978215975" duration="18484000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95312000" />
+    <option name="totallyTimeSpent" value="95666000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -359,7 +368,7 @@
     <frame x="54" y="0" width="1312" height="768" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2412723" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2412723" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -373,7 +382,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5034911" side_tool="true" weight="0.46865204" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49650893" visible="true" weight="0.46865204" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49650893" visible="true" weight="0.46865204" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -408,9 +417,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/webtorrent/webtorrent.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/webtorrent/lib/file.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -791,6 +797,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="75">
+            <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
