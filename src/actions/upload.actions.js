@@ -6,6 +6,7 @@ const uuidv1 = require('uuid/v1');
 
 const TRACKERS = [
     ["ws://ec2-52-90-79-71.compute-1.amazonaws.com:8000"],
+    ["wss://tracker.btorrent.xyz"],
 ];
 
 const generateToken = _ => uuidv1();

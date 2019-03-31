@@ -63,7 +63,7 @@ class DownloadPage extends Component {
             case 'downloaded':
                 return (
                     <div>
-                        <h3>Downloaded!<i className="fa fa-check" aria-hidden="true"></i></h3>
+                        <h3 className="mt-3">Downloaded!<i className="fa fa-check" aria-hidden="true"></i></h3>
                         <FileDescriptor file={this.props.file}/>
                         <ProgressBar striped variant="info" now={this.props.progress} className="my-3"/>
                         <Stats peers={this.props.peers} speedUp={this.props.speedUp}/>
