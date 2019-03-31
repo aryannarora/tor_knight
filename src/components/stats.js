@@ -7,7 +7,7 @@ class Stats extends Component {
         if (this.props.progress) sp2 =  <span>Progress: {this.props.progress} </span>;
         return (
             <div>
-                <span>UpSpeed: {this.props.speedUp} </span>
+                <span>UpSpeed: {this.props.speedUp || 0} </span>
                 {sp}
                 {sp2}
                 <span>Peers: {this.props.peers} </span>

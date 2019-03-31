@@ -29,8 +29,6 @@ export const requestDownload = (token) => dispatch => {
         type: ERROR
     });
 
-    console.log(token)
-
     dispatch({
         type: CONNECTING,
         payload: {}
@@ -70,7 +68,7 @@ export const requestDownload = (token) => dispatch => {
                                 progress: 100
                             }
                         });
-                        if (!sent) console.log("downloaded called")
+
                         if (!sent) file.getBlobURL((err, blobURL) => {
                             sent = true;
                             if (err) throw err;
@@ -81,7 +79,7 @@ export const requestDownload = (token) => dispatch => {
                         dispatch({
                             type: UPDATE_DOWNLOAD_PROGRESS,
                             payload: {
-                                progress: (torrent.progress * 100).toFixed(1) + '%'
+                                progress: (torrent.progress * 100).toFixed(1)
                             }
                         });
                     }

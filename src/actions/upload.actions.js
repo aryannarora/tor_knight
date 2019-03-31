@@ -1,10 +1,11 @@
 import {UPLOAD_FILES, UPDATE_TORRENT_SPEED, UPDATE_FILE_DETAILS} from '../actions/types';
 import {create as mapTokenToMagnetURI} from '../db/db';
+
 const wt = require('./../wt');
 const uuidv1 = require('uuid/v1');
 
 const TRACKERS = [
-    ["wss://tracker.btorrent.xyz"],
+    ["ws://ec2-52-90-79-71.compute-1.amazonaws.com:8000"],
 ];
 
 const generateToken = _ => uuidv1();
@@ -37,7 +38,7 @@ export const seedFiles = (files = []) => dispatch => {
                 torrent.on("download", updateSpeed);
 
                 const token = generateToken();
-                console.log(files[0])
+
                 mapTokenToMagnetURI(torrent.magnetURI, token, files[0]);
 
                 dispatch({

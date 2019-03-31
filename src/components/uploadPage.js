@@ -5,30 +5,22 @@ import Tempalink from "./tempalink";
 import FileDescriptor from "./fileDescriptor";
 import Stats from "./stats";
 import {seedFiles} from './../actions/upload.actions';
+import Error from "./error";
+import Loading from "./loading";
+import Uploading from "./uploading";
 
 class UploadPage extends Component {
 
     componentWillReceiveProps(nextProps) {
-        // if (nextProps.filesToUpload) {
-        //     nextProps.filesToUpload.map(file => (
-        //         this.props.filesToUpload.unshift(file)
-        //     ));
-        // }
+        // TODO
     }
 
     render() {
-        // const files = this.props.filesToUpload.map(file => (
-        //     <div key={file.lastModified}>
-        //         <h3>{file.name}</h3>
-        //         <p>{file.size}</p>
-        //     </div>
-        // ));
-
         switch (this.props.status) {
             case 'ready' :
                 return (
                     <div>
-                        <h3>Drop a file here to upload</h3>
+                        <h4 className="mt-3">Drop a file here to upload</h4>
                         <Dropzone onFilesAdded={this.props.seedFiles}/>
                     </div>
                 );
@@ -36,7 +28,9 @@ class UploadPage extends Component {
             case 'processing' :
                 return (
                     <div>
+                        <Loading/>
                         <h3>Processing...</h3>
+                        <p>Please hold your horses.</p>
                     </div>
                 );
 
@@ -44,6 +38,7 @@ class UploadPage extends Component {
                 return (
                     <div>
                         <h3>Uploading file!</h3>
+                        <Uploading/>
                         <FileDescriptor file={this.props.file}/>
                         <Stats peers={this.props.peers} speedUp={this.props.speedUp}/>
                         <Tempalink token={this.props.token}/>
@@ -52,9 +47,7 @@ class UploadPage extends Component {
 
             default:
                 return (
-                    <div>
-                        <h3>Boom shakalaka</h3>
-                    </div>
+                    <Error/>
                 );
         }
     }

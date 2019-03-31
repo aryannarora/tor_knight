@@ -11,14 +11,10 @@ class DownloadButton extends Component {
         if (this.props.onClick) this.props.onClick(this.props.token);
     }
 
-    // componentDidMount() {
-    //     this.props.token = window.location.pathname;
-    // }
-
     render() {
         return (
             <div>
-                <button onClick={this.onClick}>Download File</button>
+                <button className="mt-3 btn btn-outline-danger" onClick={this.onClick}>Download File <i className="fa fa-download" aria-hidden="true"></i></button>
             </div>
         );
     }
