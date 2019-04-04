@@ -5,7 +5,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.<br>
-Make sure you make a new `config.js` file in accordance with `config.sample.js` before this command.<br>
+Make sure you run `npm i` && make a new `config.js` file in accordance with `config.sample.js` before this command.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
